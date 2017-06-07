@@ -1,5 +1,5 @@
 import React from 'react'
-import UserList from '../containers/user-list'
+import UserList from '../containers/userListContainer'
 import './HomeView.scss'
 
 export const HomeView = () => (
