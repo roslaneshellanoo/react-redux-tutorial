@@ -1,5 +1,6 @@
 import React from 'react'
 import UserList from '../containers/userListContainer'
+import UserDetail from '../containers/userDetailContainer'
 import './HomeView.scss'
 
 export const HomeView = () => (
@@ -11,6 +12,7 @@ export const HomeView = () => (
       <h2>
         User Details:
       </h2>
+      <UserDetail />
     </div>
   </div>
 )
