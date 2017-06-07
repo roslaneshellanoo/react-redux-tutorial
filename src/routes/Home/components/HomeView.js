@@ -1,11 +1,17 @@
 import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
+import UserList from '../containers/user-list'
 import './HomeView.scss'
 
 export const HomeView = () => (
   <div>
-    <h4>Welcome!</h4>
-    <img alt='This is a duck, because Redux!' className='duck' src={DuckImage} />
+    <div className='wrap-users'>
+      <h2>Username List</h2>
+      <UserList />
+      <hr />
+      <h2>
+        User Details:
+      </h2>
+    </div>
   </div>
 )
 
