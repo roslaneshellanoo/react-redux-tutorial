@@ -1,7 +1,12 @@
 import React from 'react'
 import { IndexLink, Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
 export default class Header extends React.Component {
+  goHome (event) {
+    event.preventDefault()
+    browserHistory.push('/')
+  }
   render () {
     return (
       <nav className='navbar navbar-default'>
@@ -25,7 +30,9 @@ export default class Header extends React.Component {
               <li>
                 <IndexLink to='/' activeClassName='page-layout__nav-item--active'>Home</IndexLink>
               </li>
-
+              <li>
+                <Link to='/users' activeClassName='page-layout__nav-item--active'>Users</Link>
+              </li>
               <li>
                 <Link to='/counter' activeClassName='page-layout__nav-item--active'>Counter</Link>
               </li>
@@ -37,7 +44,7 @@ export default class Header extends React.Component {
               <div className='form-group'>
                 <input type='text' className='form-control' placeholder='Search' />
               </div>
-              <button type='submit' className='btn btn-default'>Submit</button>
+              <button onClick={this.goHome} type='submit' className='btn btn-default'>Submit</button>
             </form>
             <ul className='nav navbar-nav navbar-right'>
               <li><a href='#'>Link</a></li>
