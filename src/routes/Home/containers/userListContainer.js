@@ -3,8 +3,26 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { selectUser } from '../../../store/actions'
+import createStore from '../../../store/createStore'
+const store = createStore()
 
 class UserList extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      branchValue: ''
+    }
+    store.subscribe(() => {
+      this.setState({
+        branchValue: store.getState().branchReducer
+      })
+    })
+  }
+
+  componentDidMount () {
+    console.log(this.state.branchValue)
+  }
+
   createListItems () {
     return this.props.users.map((user, i) => {
       return (
@@ -17,19 +35,24 @@ class UserList extends React.Component {
   }
   render () {
     return (
-      <ul className='list-unstyled list-group'>
-        {this.createListItems()}
-      </ul>
+      <div>
+        <h2>This is branch value: {this.props.branchValue}</h2>
+        <ul className='list-unstyled list-group'>
+          {this.createListItems()}
+        </ul>
+      </div>
     )
   }
 }
 UserList.propTypes = {
   users: PropTypes.array,
-  selectUser: PropTypes.func
+  selectUser: PropTypes.func,
+  branchValue: PropTypes.any
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users
+  users: state.users,
+  branchValue : state.branchReducer
 })
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({ selectUser: selectUser }, dispatch)

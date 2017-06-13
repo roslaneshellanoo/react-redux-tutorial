@@ -16,7 +16,7 @@ export class BranchSelect extends React.Component {
     this.setState({ value: event.target.value })
   }
   componentDidMount () {
-    console.log(this.props)
+    // console.log(this.props)
   }
 
   render () {
@@ -55,7 +55,7 @@ BranchSelect.propTypes = {
 const mapDispatchToProps = (dispatch) => {
   // increment : () => increment(1),
   return {
-    setBranch : (evt) => dispatch(setBranch(evt.target.value)),
+    setBranch : (event) => dispatch(setBranch(event.target.value)),
     dispatch
   }
 }

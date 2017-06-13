@@ -9,7 +9,7 @@ import { increment } from '../modules/counter'
     component - in this case, the counter:   */
 
 // import Counter from '../components/Counter'
-export const Counter = ({ counter, increment, doubleAsync }) => (
+export const Counter = ({ counter, increment }) => (
   <div style={{ margin: '0 auto' }} >
     <h2>Counter: {counter}</h2>
     <button className='btn btn-primary' onClick={increment}>
