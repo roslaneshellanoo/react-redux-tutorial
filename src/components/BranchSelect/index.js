@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { setBranch } from '../../store/reducers/branchReducer'
 
-export default class BranchSelect extends React.Component {
+export class BranchSelect extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -13,6 +15,9 @@ export default class BranchSelect extends React.Component {
   handleChange (event) {
     this.setState({ value: event.target.value })
   }
+  componentDidMount () {
+    console.log(this.props)
+  }
 
   render () {
     return (
@@ -21,7 +26,12 @@ export default class BranchSelect extends React.Component {
           <div className='form-group'>
             <label htmlFor='select' className='col-lg-2 control-label'>Selects</label>
             <div className='col-lg-10'>
-              <select className='form-control' id='select' value={this.props.branchState} onChange={this.props.changeBranch}>
+              <select
+                className='form-control'
+                id='select'
+                value={this.props.branchValue}
+                onChange={this.props.setBranch}
+              >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
@@ -38,6 +48,21 @@ export default class BranchSelect extends React.Component {
 }
 
 BranchSelect.propTypes = {
-  changeBranch: PropTypes.any,
-  branchState: PropTypes.any
+  setBranch: PropTypes.any,
+  branchValue: PropTypes.any
 }
+
+const mapDispatchToProps = (dispatch) => {
+  // increment : () => increment(1),
+  return {
+    setBranch : (evt) => dispatch(setBranch(evt.target.value)),
+    dispatch
+  }
+}
+
+const mapStateToProps = (state) => ({
+  // counter : state.counter,
+  branchValue : state.value
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BranchSelect)

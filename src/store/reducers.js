@@ -3,6 +3,7 @@ import locationReducer from './location'
 import userReducer from './reducer-users'
 import ActiveUserReducer from './reducer-active-user'
 import sessionReducer from './sessionReducer'
+import branchReducer from './reducers/branchReducer'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
@@ -10,6 +11,7 @@ export const makeRootReducer = (asyncReducers) => {
     session: sessionReducer,
     users: userReducer,
     activeUser: ActiveUserReducer,
+    branchReducer,
     ...asyncReducers
   })
 }

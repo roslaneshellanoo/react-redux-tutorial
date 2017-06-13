@@ -1,20 +1,34 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { increment, doubleAsync } from '../modules/counter'
+import { increment } from '../modules/counter'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
     wiring in the actions and state necessary to render a presentational
     component - in this case, the counter:   */
 
-import Counter from '../components/Counter'
+// import Counter from '../components/Counter'
+export const Counter = ({ counter, increment, doubleAsync }) => (
+  <div style={{ margin: '0 auto' }} >
+    <h2>Counter: {counter}</h2>
+    <button className='btn btn-primary' onClick={increment}>
+      Increment
+    </button>
+    {' '}
+  </div>
+)
+Counter.propTypes = {
+  counter: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired
+}
 
 /*  Object of action creators (can also be function that returns object).
     Keys will be passed as props to presentational components. Here we are
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapDispatchToProps = {
-  increment : () => increment(1),
-  doubleAsync
+  increment : () => increment(1)
 }
 
 const mapStateToProps = (state) => ({
