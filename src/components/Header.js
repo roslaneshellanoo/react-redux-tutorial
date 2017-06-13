@@ -1,12 +1,7 @@
 import React from 'react'
 import { IndexLink, Link } from 'react-router'
-import { browserHistory } from 'react-router'
-
+import BranchSelect from '../components/BranchSelect'
 export default class Header extends React.Component {
-  goHome (event) {
-    event.preventDefault()
-    browserHistory.push('/')
-  }
   render () {
     return (
       <nav className='navbar navbar-default'>
@@ -47,7 +42,9 @@ export default class Header extends React.Component {
               <button onClick={this.goHome} type='submit' className='btn btn-default'>Submit</button>
             </form>
             <ul className='nav navbar-nav navbar-right'>
-              <li><a href='#'>Link</a></li>
+              <li>
+                <BranchSelect />
+              </li>
             </ul>
           </div>
         </div>

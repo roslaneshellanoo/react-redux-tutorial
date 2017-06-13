@@ -23,9 +23,9 @@ export class BranchSelect extends React.Component {
     return (
       <form className='form-horizontal'>
         <fieldset>
-          <div className='form-group'>
+          <div className=''>
             <label htmlFor='select' className='col-lg-2 control-label'>Selects</label>
-            <div className='col-lg-10'>
+            <div className='col col-xs-12'>
               <select
                 className='form-control'
                 id='select'
